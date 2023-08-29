@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    card_view:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardViewBackground">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/currentTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            style="@style/WFTitle.WFCurrentTemp"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
+            tools:text="23C" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/weatherCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            style="@style/WFTitle"
+            card_view:layout_constraintBottom_toBottomOf="@id/currentTemperature"
+            card_view:layout_constraintStart_toEndOf="@id/currentTemperature"
+            tools:text="Partly cloud" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/currentDateAndTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/WFSubTitle"
+            card_view:layout_constraintTop_toBottomOf="@id/currentTemperature"
+            card_view:layout_constraintStart_toStartOf="@id/currentTemperature"
+            tools:text="Tue 23/12"
+            android:paddingBottom="8dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/currentDateWeatherCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/WFSubTitle"
+            card_view:layout_constraintTop_toBottomOf="@id/currentTemperature"
+            card_view:layout_constraintStart_toEndOf="@id/currentDateAndTemp"
+            tools:text="Sunny most of the day"
+            android:layout_marginStart="16dp"
+            android:paddingBottom="8dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
+
+

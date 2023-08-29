@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Margin -->
+    <dimen name="wfMarginBottomScreen">144dp</dimen> <!-- TabBar + MiniPlayer + margin -->
+    <dimen name="wfMargin80">80dp</dimen>
+    <dimen name="wfMarginBottom">40dp</dimen>
+    <dimen name="wfMarginHuge">24dp</dimen>
+    <dimen name="wfMarginLarge">16dp</dimen>
+    <dimen name="wfMarginMedium">10dp</dimen>
+    <dimen name="wfMarginSmall">5dp</dimen>
+
+    <!-- Text -->
+    <dimen name="wfTextHuge">48sp</dimen>
+    <dimen name="wfText20">20sp</dimen>
+    <dimen name="wfText18">18sp</dimen>
+    <dimen name="wfText17">17sp</dimen>
+    <dimen name="wfText16">16sp</dimen>
+    <dimen name="wfTextLarge">15sp</dimen>
+    <dimen name="wfTextDescription">14sp</dimen>
+    <dimen name="wfTextMedium">13sp</dimen>
+    <dimen name="wfTextSmall">11sp</dimen>
+
+    <dimen name="wfRoundItem">16dp</dimen>
+    <dimen name="wfRoundSmallItem">5dp</dimen>
+
+</resources>

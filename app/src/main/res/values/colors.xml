@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Layers -->
+    <color name="wfAccent">#2E43BA</color>
+    <color name="wfAccentMuted">#bdbdbd</color>
+    <color name="wfDividerColor">#d9d9d9</color>
+    <color name="wfIconMuted">#bdbdbd</color>
+    <color name="wfIconPrimary">#1e1e1e</color>
+    <color name="wfIconHighlight">@color/wfIconPrimary</color>
+
+    <!-- Typography -->
+    <color name="wfButtonTextColor">#ffffff</color>
+    <color name="wfLinkColor">@color/wfAccent</color>
+    <color name="wfTextColor">#1e1e1e</color>
+    <color name="wfTextMutedColor">#767676</color>
+    <color name="wfTitleColor">#1e1e1e</color>
+    <color name="wfTitleMutedColor">#bbbbbb</color>
+
+    <color name="wfBgPrimaryAlpha">#ddfcfcfc</color>
+    <color name="wfBgDark80">#801e1e1e</color>
+    <color name="payment_orange_yellow_start_color">#CCB100</color>
+    <color name="payment_orange_yellow_end_color">#CC8903</color>
+    <color name="payment_text_view_divider_text_color">#474747</color>
+    <color name="demo_premium_check_icon">#45FF89</color>
+    <color name="premium_subscription_background_color">#F0F0F0</color>
+    <color name="premium_subscription_background_info_color">#F0F0F0</color>
+    <color name="premium_subscription_line_separator_color">#FFFFFF</color>
+    <color name="premium_subscription_info_secondary_color">#8E8E8E</color>
+    <color name="premium_subscription_date_info_color">#8E8E8E</color>
+
+    <color name="sponsorStartGradientColor">#B3000000</color>
+    <color name="sponsorEndGradientColor">#00000000</color>
+    <color name="sponsorImageTint">@color/white</color>
+
+    <color name="textBackgroundDark">#D9000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="cardViewBackground">#F0F0F0</color>
+    <color name="newsSubTitleColor">#696969</color>
+
+    <color name="mixerPlaceholderLight">#4D4D4D</color>
+    <color name="mixerPlaceholderDark">#353535</color>
+    <color name="mixerIconTint">#8E8E8E</color>
+    <color name="podcast_overlay">#991E1E1E</color>
+    <color name="live_stream_switcher_line_separator_color">#434343</color>
+</resources>
