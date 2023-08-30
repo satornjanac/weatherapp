@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.WeatherForcastApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar" />
+    <style name="Theme.WeatherForcastApp" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
 
     <style name="WFTitle">
         <item name="android:textSize">@dimen/wfText20</item>

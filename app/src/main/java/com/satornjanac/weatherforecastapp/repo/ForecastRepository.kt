@@ -26,7 +26,7 @@ class ForecastRepository @Inject constructor(
             if (forecast.isSuccessful && responseBody != null) {
                 Success(responseBody)
             } else {
-                Error(forecast.code(), "Something somewhere went terible wrong")
+                Error(forecast.code(), "Something somewhere went terrible wrong")
             }
         }
     }

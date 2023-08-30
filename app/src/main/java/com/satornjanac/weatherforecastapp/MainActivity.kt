@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.satornjanac.weatherforcastapp.databinding.ActivityMainBinding
+import com.satornjanac.weatherforecastapp.ui.adapters.WeatherAdapter
 import com.satornjanac.weatherforecastapp.ui.viewmodels.ForecastViewModel
 import com.satornjanac.weatherforecastapp.ui.viewmodels.SectionsViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,16 +37,19 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
 
+        setSupportActionBar(activityMainBinding.toolbar)
+
         checkForLocation()
 
-        forecastViewModel.currentWeather.observe(this) {
-
+        forecastViewModel.viewsAndData.observe(this) {
+            activityMainBinding.sectionsList.adapter = WeatherAdapter(this, it)
+            activityMainBinding.sectionsList.setHasFixedSize(true)
         }
 
-        sectionViewModel.sectionList.observe(this) {
-            Toast.makeText(this, "Size is: ${it.size}", Toast.LENGTH_LONG).show()
-        }
-        sectionViewModel.getSections()
+//        sectionViewModel.sectionList.observe(this) {
+//            Toast.makeText(this, "Size is: ${it.size}", Toast.LENGTH_LONG).show()
+//        }
+//        sectionViewModel.getSections()
 
     }
 

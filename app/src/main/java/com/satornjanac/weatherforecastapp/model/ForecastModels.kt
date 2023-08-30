@@ -12,7 +12,7 @@ data class CurrentWeather(
 
 data class Hourly(
     @SerializedName("time") val times: List<String>,
-    @SerializedName( "temperature_2m") val temperatures: List<Float>,
+    @SerializedName("temperature_2m") val temperatures: List<Float>,
     @SerializedName("weathercode") val weatherCodes: List<Int>,
     @SerializedName("is_day") val isDay: List<Int>,
 )

@@ -1,7 +1,6 @@
 package com.satornjanac.weatherforecastapp.di
 
 import com.satornjanac.weatherforecastapp.networking.ForecastApi
-import com.satornjanac.weatherforecastapp.networking.GeocodingApi
 import com.satornjanac.weatherforecastapp.networking.HeaderAccept
 import com.satornjanac.weatherforecastapp.networking.HeaderContentType
 import com.satornjanac.weatherforecastapp.networking.MockViewApi
@@ -48,11 +47,6 @@ object AppModule {
     @Provides
     fun provideForecast(retrofit: Retrofit): ForecastApi =
         retrofit.create(ForecastApi::class.java)
-
-    @Singleton
-    @Provides
-    fun provideGeocoding(retrofit: Retrofit): GeocodingApi =
-        retrofit.create(GeocodingApi::class.java)
 
     @Singleton
     @Provides

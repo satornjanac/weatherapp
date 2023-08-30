@@ -28,15 +28,25 @@
         app:layout_constraintTop_toBottomOf="@id/hourLabel" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/maxTemp"
+        android:id="@+id/weatherCodeLabel"
         style="@style/WFSubTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="56dp"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/weatherCodeImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/weatherCodeImage"
+        tools:text="Thunderstorm" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/currentTemperature"
+        style="@style/WFSubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="@id/weatherCodeImage"
+        app:layout_constraintStart_toStartOf="@id/weatherCodeImage"
+        app:layout_constraintTop_toBottomOf="@id/weatherCodeLabel"
         tools:text="21C" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
