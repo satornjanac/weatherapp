@@ -88,14 +88,14 @@ Ideal solution for this kind of problem is to have both responses on one API poi
 	    },
 	    {
 	        "id": 2,
-            "type":"hourly_forecast",
-            "data_object_id": "object_id_2",
-            ...
+            	"type":"hourly_forecast",
+            	"data_object_id": "object_id_2",
+            	...
 	    },
 	    {
-            "id": 1,
-            "type":"current_weather",
-            "data_object_id": "object_id_3",
+            	"id": 1,
+            	"type":"current_weather",
+            	"data_object_id": "object_id_3",
 	         ...
 	    },
 	    {
@@ -146,7 +146,19 @@ Ideal solution for this kind of problem is to have both responses on one API poi
 }
 ```
 
-First part sections would look nearly the same, only difference would be data_object_id that is actually id of the item from data_objects list that we would used to display data to the user. Now when we build our DisplayItems we would iterate trough list of sections and based on this id, filter only that one item from data_object and build one DisplayItem
+First part of JSON, sections would look nearly the same, only difference would be data_object_id that is actually id of the item from data_objects list that we would used to display data to the user. Now when we build our DisplayItems we would iterate trough list of sections and based on this id, filter only that one item from data_object and build one DisplayItem. 
+
+The second possible solutions is to have sections and data together in one object so that we don't need to iterate trough two lists while we build DisplayItems on mobile side.
+
+```
+{
+	        "id":4,
+	        "type":"daily_forecast",
+	        "data_object_id": "object_id_1",
+	        ...
+		"data": { ... }
+	    }
+```
 
 ### Locations
 
