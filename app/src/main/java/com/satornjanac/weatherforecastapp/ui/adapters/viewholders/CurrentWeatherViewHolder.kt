@@ -8,6 +8,7 @@ import com.satornjanac.weatherforecastapp.extensions.toDay
 import com.satornjanac.weatherforecastapp.extensions.visible
 import com.satornjanac.weatherforecastapp.extensions.weatherCodeIcon
 import com.satornjanac.weatherforecastapp.extensions.weatherCodeToString
+import com.satornjanac.weatherforecastapp.model.IS_DAY
 import com.satornjanac.weatherforecastapp.model.ui.DisplayItems
 import kotlin.math.roundToInt
 
@@ -46,7 +47,7 @@ class CurrentWeatherViewHolder(private val binding: CurrentWeatherViewBinding) :
 
             if (item.section.showWeatherCodeIcon) {
                 binding.currentWeatherCodeIcon.setBackgroundResource(
-                    it.weatherCode.weatherCodeIcon(it.isDay == 1)
+                    it.weatherCode.weatherCodeIcon(it.isDay == IS_DAY)
                 )
                 binding.currentWeatherCodeIcon.visible()
 
@@ -56,7 +57,7 @@ class CurrentWeatherViewHolder(private val binding: CurrentWeatherViewBinding) :
 
             if (item.section.showWeatherCodeIcon) {
                 binding.currentWeatherCodeIcon.setBackgroundResource(
-                    it.weatherCode.weatherCodeIcon(it.isDay == 1)
+                    it.weatherCode.weatherCodeIcon(it.isDay == IS_DAY)
                 )
                 binding.currentWeatherCodeIcon.visible()
 

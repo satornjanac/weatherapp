@@ -2,6 +2,7 @@ package com.satornjanac.weatherforecastapp.model
 
 import com.google.gson.annotations.SerializedName
 
+const val IS_DAY = 0
 data class CurrentWeather(
     @SerializedName("time") val time: String,
     @SerializedName("temperature") val temperature: Float,

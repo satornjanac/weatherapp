@@ -12,6 +12,7 @@ import com.satornjanac.weatherforecastapp.extensions.visible
 import com.satornjanac.weatherforecastapp.extensions.weatherCodeIcon
 import com.satornjanac.weatherforecastapp.extensions.weatherCodeToString
 import com.satornjanac.weatherforecastapp.model.Hourly
+import com.satornjanac.weatherforecastapp.model.IS_DAY
 import com.satornjanac.weatherforecastapp.model.Section
 import com.satornjanac.weatherforecastapp.model.ui.DisplayItems
 
@@ -50,7 +51,7 @@ class HourlyAdapter(private val context: Context, private val item: DisplayItems
             if (section.showWeatherCodeIcon) {
                 holder.binding.weatherCodeImage.setImageResource(
                     hourly.weatherCodes[position].weatherCodeIcon(
-                        hourly.isDay[position] == 1
+                        hourly.isDay[position] == IS_DAY
                     )
                 )
                 holder.binding.weatherCodeImage.visible()

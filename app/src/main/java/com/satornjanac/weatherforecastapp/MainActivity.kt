@@ -5,22 +5,17 @@ import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.satornjanac.weatherforcastapp.databinding.ActivityMainBinding
 import com.satornjanac.weatherforecastapp.ui.adapters.WeatherAdapter
 import com.satornjanac.weatherforecastapp.ui.viewmodels.ForecastViewModel
-import com.satornjanac.weatherforecastapp.ui.viewmodels.SectionsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.TimeZone
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -30,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     private val forecastViewModel: ForecastViewModel by viewModels()
-    private val sectionViewModel: SectionsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,14 +36,14 @@ class MainActivity : AppCompatActivity() {
         checkForLocation()
 
         forecastViewModel.viewsAndData.observe(this) {
+            activityMainBinding.swipeToRefresh.isRefreshing = false
             activityMainBinding.sectionsList.adapter = WeatherAdapter(this, it)
             activityMainBinding.sectionsList.setHasFixedSize(true)
         }
 
-//        sectionViewModel.sectionList.observe(this) {
-//            Toast.makeText(this, "Size is: ${it.size}", Toast.LENGTH_LONG).show()
-//        }
-//        sectionViewModel.getSections()
+        activityMainBinding.swipeToRefresh.setOnRefreshListener {
+            checkForLocation()
+        }
 
     }
 

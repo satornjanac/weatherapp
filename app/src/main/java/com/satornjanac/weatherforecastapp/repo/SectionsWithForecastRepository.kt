@@ -22,8 +22,8 @@ class SectionsWithForecastRepository @Inject constructor(
 ) {
 
     private val mockApis = arrayListOf<String>().apply {
-        add("https://run.mocky.io/v3/4a75fdcb-31e8-4ee6-83ae-892b4c1e36bd") // show 1. hourly 2. current 3.daily
-        add("https://run.mocky.io/v3/62ed9f37-782a-4e15-9859-f1055a3e9dea") // show only daily
+        add("https://run.mocky.io/v3/1f2835b0-9f6b-4a7d-aaac-d270571799e6") // show 1. hourly 2. current 3.daily
+        add("https://run.mocky.io/v3/988680e9-3580-4d12-8c4b-a1567dd86768") // show only daily
         add("https://run.mocky.io/v3/c6d894eb-5f90-416a-8bda-b64315c87701") // show 1. daily 2. hourly 3. current 4.daily
     }
 
@@ -34,7 +34,7 @@ class SectionsWithForecastRepository @Inject constructor(
     ): ApiResult<List<DisplayItems>> {
         return withContext(dispatcher) {
             val number = (0..<mockApis.size).random()
-            val sections = mock.getMockViewApi(mockApis[2])
+            val sections = mock.getMockViewApi(mockApis[number])
             val responseBody = sections.body()
             if (sections.isSuccessful && responseBody != null) {
                 val forecast = forecastApi.getForecast(longitude, latitude, timeZone)
