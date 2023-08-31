@@ -1,13 +1,16 @@
 package com.satornjanac.weatherforecastapp.repo
 
 import com.satornjanac.weatherforecastapp.di.IoDispatcher
+import com.satornjanac.weatherforecastapp.model.Forecast
+import com.satornjanac.weatherforecastapp.model.Section
+import com.satornjanac.weatherforecastapp.model.SectionTypes
 import com.satornjanac.weatherforecastapp.model.Sections
-import com.satornjanac.weatherforecastapp.model.SectionsWithForecast
-import com.satornjanac.weatherforecastapp.networking.ApiResult
-import com.satornjanac.weatherforecastapp.networking.Error
-import com.satornjanac.weatherforecastapp.networking.ForecastApi
-import com.satornjanac.weatherforecastapp.networking.MockViewApi
-import com.satornjanac.weatherforecastapp.networking.Success
+import com.satornjanac.weatherforecastapp.model.ui.DisplayItems
+import com.satornjanac.weatherforecastapp.networking.core.ApiResult
+import com.satornjanac.weatherforecastapp.networking.core.Error
+import com.satornjanac.weatherforecastapp.networking.api.ForecastApi
+import com.satornjanac.weatherforecastapp.networking.api.MockViewApi
+import com.satornjanac.weatherforecastapp.networking.core.Success
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -28,7 +31,7 @@ class SectionsWithForecastRepository @Inject constructor(
         longitude: Double,
         latitude: Double,
         timeZone: String
-    ): ApiResult<SectionsWithForecast> {
+    ): ApiResult<List<DisplayItems>> {
         return withContext(dispatcher) {
             val number = (0..<mockApis.size).random()
             val sections = mock.getMockViewApi(mockApis[2])
@@ -37,7 +40,10 @@ class SectionsWithForecastRepository @Inject constructor(
                 val forecast = forecastApi.getForecast(longitude, latitude, timeZone)
                 val forecastBody = forecast.body()
                 if (forecast.isSuccessful && forecastBody != null) {
-                    Success(SectionsWithForecast(responseBody, forecastBody))
+
+                    val displayItems = buildDisplayItems(responseBody, forecastBody)
+
+                    Success(displayItems)
                 } else {
                     Error(forecast.code(), forecast.errorBody()?.string())
                 }
@@ -45,6 +51,32 @@ class SectionsWithForecastRepository @Inject constructor(
                 Error(sections.code(), sections.errorBody()?.string())
             }
         }
+    }
+
+    private fun buildDisplayItems(sections: Sections,
+                                  forecast: Forecast
+    ): List<DisplayItems> {
+        val displayItems = ArrayList<DisplayItems>()
+
+        sections.sections.forEach {section ->
+
+            val item = when (Section.getTypeOrdinal(section.type)) {
+                SectionTypes.DAILY_FORECAST.ordinal -> {
+                    DisplayItems(section, dailyWeather = forecast.daily, unit = forecast.hourlyUnits.unit)
+                }
+                SectionTypes.HOURLY_FORECAST.ordinal -> {
+                    DisplayItems(section, hourlyWeather = forecast.hourly, unit = forecast.hourlyUnits.unit)
+                } else -> {
+                    DisplayItems(section, currentWeather = forecast.currentWeather, dailyWeather = forecast.daily, unit = forecast.hourlyUnits.unit)
+                }
+            }
+
+            displayItems.add(item)
+
+        }
+
+        return displayItems
+
     }
 
 }

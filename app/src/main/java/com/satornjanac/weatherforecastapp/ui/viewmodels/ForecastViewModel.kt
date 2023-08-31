@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.satornjanac.weatherforecastapp.model.SectionsWithForecast
-import com.satornjanac.weatherforecastapp.networking.Error
-import com.satornjanac.weatherforecastapp.networking.Success
+import com.satornjanac.weatherforecastapp.model.ui.DisplayItems
+import com.satornjanac.weatherforecastapp.networking.core.Error
+import com.satornjanac.weatherforecastapp.networking.core.Success
 import com.satornjanac.weatherforecastapp.repo.SectionsWithForecastRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -20,7 +20,7 @@ class ForecastViewModel @Inject constructor(
     // showing all error dialogs regarding mixes
     private val _errors = MutableLiveData<String?>()
     val errors: LiveData<String?> = _errors
-    private val _viewsAndData = MutableLiveData<SectionsWithForecast>()
+    private val _viewsAndData = MutableLiveData<List<DisplayItems>>()
     val viewsAndData = _viewsAndData
 
         fun getForecast(

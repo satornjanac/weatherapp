@@ -1,4 +1,4 @@
-package com.satornjanac.weatherforecastapp.networking
+package com.satornjanac.weatherforecastapp.networking.api
 
 import com.satornjanac.weatherforecastapp.model.Sections
 import retrofit2.Response

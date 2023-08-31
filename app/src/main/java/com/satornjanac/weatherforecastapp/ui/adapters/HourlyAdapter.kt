@@ -13,8 +13,9 @@ import com.satornjanac.weatherforecastapp.extensions.weatherCodeIcon
 import com.satornjanac.weatherforecastapp.extensions.weatherCodeToString
 import com.satornjanac.weatherforecastapp.model.Hourly
 import com.satornjanac.weatherforecastapp.model.Section
+import com.satornjanac.weatherforecastapp.model.ui.DisplayItems
 
-class HourlyAdapter(private val context: Context, private val hourly: Hourly, private val section: Section, private val unit: String) :
+class HourlyAdapter(private val context: Context, private val item: DisplayItems) :
     RecyclerView.Adapter<HourlyAdapter.HourlyItemViewHolder>() {
 
     inner class HourlyItemViewHolder(val binding: HourlyItemBinding) :
@@ -31,40 +32,46 @@ class HourlyAdapter(private val context: Context, private val hourly: Hourly, pr
     }
 
     override fun onBindViewHolder(holder: HourlyItemViewHolder, position: Int) {
-        if (section.showTime) {
-            holder.binding.hourLabel.text = if (position != 0) {
-                hourly.times[position].toHour()
+        val section = item.section
+        val hourlyWeather = item.hourlyWeather
+
+        hourlyWeather?.let { hourly ->
+            if (section.showTime) {
+                holder.binding.hourLabel.text = if (position != 0) {
+                    hourly.times[position].toHour()
+                } else {
+                    context.getText(R.string.now)
+                }
+                holder.binding.hourLabel.visible()
             } else {
-                context.getText(R.string.now)
+                holder.binding.hourLabel.gone()
             }
-            holder.binding.hourLabel.visible()
-        } else {
-            holder.binding.hourLabel.gone()
-        }
 
-        if (section.showWeatherCodeIcon) {
-            holder.binding.weatherCodeImage.setImageResource(
-                hourly.weatherCodes[position].weatherCodeIcon(
-                    hourly.isDay[position] == 1
+            if (section.showWeatherCodeIcon) {
+                holder.binding.weatherCodeImage.setImageResource(
+                    hourly.weatherCodes[position].weatherCodeIcon(
+                        hourly.isDay[position] == 1
+                    )
                 )
-            )
-            holder.binding.weatherCodeImage.visible()
-        } else {
-            holder.binding.weatherCodeImage.gone()
+                holder.binding.weatherCodeImage.visible()
+            } else {
+                holder.binding.weatherCodeImage.gone()
+            }
+
+            if (section.showWeatherCodeLabel) {
+                holder.binding.weatherCodeLabel.text =
+                    hourly.weatherCodes[position].weatherCodeToString(context.resources)
+                holder.binding.weatherCodeLabel.visible()
+            } else {
+                holder.binding.weatherCodeLabel.gone()
+            }
+
+            if (section.showTemperature) {
+                holder.binding.currentTemperature.text =
+                    context.getString(R.string.temperature, hourly.temperatures[position].toInt(), item.unit)
+            }
         }
 
-        if (section.showWeatherCodeLabel) {
-            holder.binding.weatherCodeLabel.text =
-                hourly.weatherCodes[position].weatherCodeToString(context.resources)
-            holder.binding.weatherCodeLabel.visible()
-        } else {
-            holder.binding.weatherCodeLabel.gone()
-        }
-
-        if (section.showTemperature) {
-            holder.binding.currentTemperature.text =
-                context.getString(R.string.temperature, hourly.temperatures[position].toInt(), unit)
-        }
 
     }
 }

@@ -4,12 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.satornjanac.weatherforecastapp.model.CurrentWeather
 import com.satornjanac.weatherforecastapp.model.Section
-import com.satornjanac.weatherforecastapp.model.Sections
-import com.satornjanac.weatherforecastapp.networking.Error
-import com.satornjanac.weatherforecastapp.networking.Success
-import com.satornjanac.weatherforecastapp.repo.ForecastRepository
+import com.satornjanac.weatherforecastapp.networking.core.Error
+import com.satornjanac.weatherforecastapp.networking.core.Success
 import com.satornjanac.weatherforecastapp.repo.SectionsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

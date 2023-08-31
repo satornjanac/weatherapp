@@ -1,9 +1,9 @@
 package com.satornjanac.weatherforecastapp.di
 
-import com.satornjanac.weatherforecastapp.networking.ForecastApi
-import com.satornjanac.weatherforecastapp.networking.HeaderAccept
-import com.satornjanac.weatherforecastapp.networking.HeaderContentType
-import com.satornjanac.weatherforecastapp.networking.MockViewApi
+import com.satornjanac.weatherforecastapp.networking.api.ForecastApi
+import com.satornjanac.weatherforecastapp.networking.core.HeaderAccept
+import com.satornjanac.weatherforecastapp.networking.core.HeaderContentType
+import com.satornjanac.weatherforecastapp.networking.api.MockViewApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

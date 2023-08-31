@@ -1,4 +1,4 @@
-package com.satornjanac.weatherforecastapp.networking
+package com.satornjanac.weatherforecastapp.networking.core
 
 interface ApiResult<T : Any>
 

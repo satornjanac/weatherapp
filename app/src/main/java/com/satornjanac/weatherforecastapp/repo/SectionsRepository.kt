@@ -2,10 +2,10 @@ package com.satornjanac.weatherforecastapp.repo
 
 import com.satornjanac.weatherforecastapp.di.IoDispatcher
 import com.satornjanac.weatherforecastapp.model.Sections
-import com.satornjanac.weatherforecastapp.networking.ApiResult
-import com.satornjanac.weatherforecastapp.networking.Error
-import com.satornjanac.weatherforecastapp.networking.MockViewApi
-import com.satornjanac.weatherforecastapp.networking.Success
+import com.satornjanac.weatherforecastapp.networking.core.ApiResult
+import com.satornjanac.weatherforecastapp.networking.core.Error
+import com.satornjanac.weatherforecastapp.networking.api.MockViewApi
+import com.satornjanac.weatherforecastapp.networking.core.Success
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.satornjanac.weatherforecastapp.networking
+package com.satornjanac.weatherforecastapp.networking.core
 
 import okhttp3.Interceptor
 import okhttp3.Response
