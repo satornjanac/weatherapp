@@ -152,12 +152,12 @@ The second possible solutions is to have sections and data together in one objec
 
 ```
 {
-	        "id":4,
-	        "type":"daily_forecast",
-	        "data_object_id": "object_id_1",
-	        ...
-		"data": { ... }
-	    }
+	"id":4,
+	"type":"daily_forecast",
+	"data_object_id": "object_id_1",
+	...
+	"data": { ... }
+}
 ```
 
 ### Locations
