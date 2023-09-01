@@ -15,7 +15,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class SectionsWithForecastRepository @Inject constructor(
+open class SectionsWithForecastRepository @Inject constructor(
     private val mock: MockViewApi,
     private val forecastApi: ForecastApi,
     @IoDispatcher private val dispatcher: CoroutineDispatcher

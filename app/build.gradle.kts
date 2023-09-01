@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    //id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
     kotlin("kapt") version "1.9.10"
 }
@@ -17,9 +16,15 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.satornjanac.weatherforecastapp.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary = true
+        }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += mapOf("room.schemaLocation" to "$projectDir/schemas".toString())
+            }
         }
     }
 
@@ -82,6 +87,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
 
     // Lifecycle (ViewModel + LiveData)
     implementation("androidx.lifecycle:lifecycle-common-java8:2.6.1")
@@ -91,10 +97,14 @@ dependencies {
     testImplementation("androidx.arch.core:core-testing:2.2.0")
 
     // Hilt + Dagger
-    implementation("com.google.dagger:hilt-android:2.47")
-    kapt("com.google.dagger:hilt-android-compiler:2.47")
-    //implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
-    //kapt("androidx.hilt:hilt-compiler:1.1.0-alpha01")
+    implementation ("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-compiler:2.48")
+    testImplementation("com.google.dagger:hilt-android-testing:2.48")
+    kaptTest("com.google.dagger:hilt-android-compiler:2.48")
+    testAnnotationProcessor("com.google.dagger:hilt-android-compiler:2.48")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.48")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.48")
+    androidTestAnnotationProcessor("com.google.dagger:hilt-android-compiler:2.48")
 
     // Location
     implementation("com.google.android.gms:play-services-location:21.0.1")
@@ -104,4 +114,10 @@ dependencies {
 // Allow references to generated code
 kapt {
     correctErrorTypes = true
+    javacOptions {
+        // These options are normally set automatically via the Hilt Gradle plugin, but we
+        // set them manually to workaround a bug in the Kotlin 1.5.20: https://github.com/google/dagger/issues/2684
+        option("-Adagger.fastInit=ENABLED")
+        option("-Adagger.hilt.android.internal.disableAndroidSuperclassValidation=true")
+    }
 }
