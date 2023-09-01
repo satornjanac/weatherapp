@@ -6,8 +6,9 @@ import com.satornjanac.weatherforecastapp.model.Section
 import com.satornjanac.weatherforecastapp.model.Sections
 import com.satornjanac.weatherforecastapp.networking.api.MockViewApi
 import retrofit2.Response
+import javax.inject.Inject
 
-class FakeMockViewApi: MockViewApi {
+class FakeMockViewApi @Inject constructor(): MockViewApi {
 
     override suspend fun getMockViewApi(url: String): Response<Sections> {
         val dailySection = Section(

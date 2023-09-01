@@ -7,6 +7,7 @@ import com.satornjanac.weatherforecastapp.model.CURRENT_WEATHER
 import com.satornjanac.weatherforecastapp.model.HOURLY_FORECAST
 import com.satornjanac.weatherforecastapp.networking.core.Success
 import dagger.hilt.android.testing.BindValue
+import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -15,7 +16,9 @@ import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
+import javax.inject.Inject
 
 @HiltAndroidTest
 class DisplayItemsTest {
@@ -23,12 +26,15 @@ class DisplayItemsTest {
     @OptIn(ExperimentalCoroutinesApi::class)
     private val testScope = TestScope(UnconfinedTestDispatcher())
 
-    @BindValue
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
+
+    @Inject
     lateinit var repository: FakeSectionsWithForecastRepository
 
     @Before
     fun setup() {
-        repository = FakeSectionsWithForecastRepository(FakeMockViewApi(), FakeForecastApi(), Dispatchers.IO)
+        hiltRule.inject()
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)

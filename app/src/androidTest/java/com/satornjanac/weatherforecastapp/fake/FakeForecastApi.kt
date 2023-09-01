@@ -4,8 +4,9 @@ import com.google.gson.Gson
 import com.satornjanac.weatherforecastapp.model.Forecast
 import com.satornjanac.weatherforecastapp.networking.api.ForecastApi
 import retrofit2.Response
+import javax.inject.Inject
 
-class FakeForecastApi : ForecastApi {
+class FakeForecastApi  @Inject constructor() : ForecastApi {
 
     // this is copy from one of the response from open meteo
     private val fakeResponseString =
