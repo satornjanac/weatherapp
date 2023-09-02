@@ -15,6 +15,10 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+/**
+ * Sections and forecast repository. First we will get sections part - what widgets we will show on home screen
+ * and then we will retrieve weather data from openmeteo api
+ */
 open class SectionsWithForecastRepository @Inject constructor(
     private val mock: MockViewApi,
     private val forecastApi: ForecastApi,

@@ -34,5 +34,7 @@
     <string name="now">Now</string>
     <string name="today">Today</string>
     <string name="temperature">"%1$d %2$s"</string>
+    <string name="could_not_load_data_message">Could not load weather at the moment. Please try again later.</string>
+    <string name="could_not_load_data_title">Could not load weather</string>
 
 </resources>

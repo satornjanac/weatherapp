@@ -23,7 +23,7 @@ import org.junit.runner.RunWith
 
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
-class ActivityTest {
+class ViewsVisibilityTest {
 
     @JvmField
     @Rule

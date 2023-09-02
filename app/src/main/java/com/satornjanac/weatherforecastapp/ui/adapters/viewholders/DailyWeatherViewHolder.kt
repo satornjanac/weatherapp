@@ -9,6 +9,9 @@ import com.satornjanac.weatherforecastapp.extensions.visible
 import com.satornjanac.weatherforecastapp.model.ui.DisplayItems
 import com.satornjanac.weatherforecastapp.ui.adapters.DailyAdapter
 
+/**
+ * Daily weather widget. UI representation of one date from [com.satornjanac.weatherforecastapp.model.Daily]
+ */
 class DailyWeatherViewHolder(private val binding: DailyForecastViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(context: Context, item: DisplayItems) {

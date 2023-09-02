@@ -12,6 +12,11 @@ import com.satornjanac.weatherforecastapp.model.IS_DAY
 import com.satornjanac.weatherforecastapp.model.ui.DisplayItems
 import kotlin.math.roundToInt
 
+/**
+ * Current weather widget. UI representation of data from [com.satornjanac.weatherforecastapp.model.CurrentWeather]
+ * and min/max temperature from [com.satornjanac.weatherforecastapp.model.Daily] if section is configured to show
+ * today's min and max temperature see [com.satornjanac.weatherforecastapp.model.Section]
+ */
 class CurrentWeatherViewHolder(private val binding: CurrentWeatherViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(

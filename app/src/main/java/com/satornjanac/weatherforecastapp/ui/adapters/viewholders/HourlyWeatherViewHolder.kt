@@ -9,6 +9,9 @@ import com.satornjanac.weatherforecastapp.extensions.visible
 import com.satornjanac.weatherforecastapp.model.ui.DisplayItems
 import com.satornjanac.weatherforecastapp.ui.adapters.HourlyAdapter
 
+/**
+ * Hourly weather widget. UI representation of one date from [com.satornjanac.weatherforecastapp.model.Hourly]
+ */
 class HourlyWeatherViewHolder(private val binding: HourlyForecastViewBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(context: Context, item: DisplayItems) {
         if (item.section.hasTitle()) {

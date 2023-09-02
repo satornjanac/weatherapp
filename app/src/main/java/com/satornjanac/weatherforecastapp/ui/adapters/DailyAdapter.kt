@@ -20,6 +20,9 @@ import com.satornjanac.weatherforecastapp.model.Section
 import com.satornjanac.weatherforecastapp.model.ui.DisplayItems
 import kotlin.math.roundToInt
 
+/**
+ * Adapter for showing daily weather for next seven days
+ */
 class DailyAdapter(private val context: Context, private val item: DisplayItems) :
     RecyclerView.Adapter<DailyAdapter.DailyItemViewHolder>() {
 
@@ -33,7 +36,7 @@ class DailyAdapter(private val context: Context, private val item: DisplayItems)
     }
 
     override fun getItemCount(): Int {
-        return 7 // we are showing a full day
+        return 7 // we are showing a full week
     }
 
     override fun onBindViewHolder(holder: DailyItemViewHolder, position: Int) {

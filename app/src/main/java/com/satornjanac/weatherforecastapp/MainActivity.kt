@@ -7,10 +7,12 @@ import android.location.Location
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.satornjanac.weatherforcastapp.R
 import com.satornjanac.weatherforcastapp.databinding.ActivityMainBinding
 import com.satornjanac.weatherforecastapp.ui.adapters.WeatherAdapter
 import com.satornjanac.weatherforecastapp.ui.viewmodels.ForecastViewModel
@@ -33,18 +35,39 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(activityMainBinding.toolbar)
 
-        checkForLocation()
+        setupObservers()
 
+        getBelgradeWeather()
+
+        activityMainBinding.swipeToRefresh.setOnRefreshListener {
+            getBelgradeWeather()
+        }
+
+    }
+
+    private fun getBelgradeWeather() {
+        activityMainBinding.swipeToRefresh.isRefreshing = true
+        val timeZone = TimeZone.getDefault()
+        forecastViewModel.getForecast(44.8125, 20.4375, timeZone.id) // Belgrade
+    }
+
+    private fun setupObservers() {
         forecastViewModel.viewsAndData.observe(this) {
             activityMainBinding.swipeToRefresh.isRefreshing = false
             activityMainBinding.sectionsList.adapter = WeatherAdapter(this, it)
             activityMainBinding.sectionsList.setHasFixedSize(true)
         }
 
-        activityMainBinding.swipeToRefresh.setOnRefreshListener {
-            checkForLocation()
+        forecastViewModel.errors.observe(this) {
+            showErrorDialog()
         }
+    }
 
+    private fun showErrorDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage(getString(R.string.could_not_load_data_message))
+        builder.setTitle(getString(R.string.could_not_load_data_title))
+        builder.show()
     }
 
     private fun checkForLocation() {

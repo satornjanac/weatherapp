@@ -15,6 +15,9 @@ import com.satornjanac.weatherforecastapp.ui.adapters.viewholders.CurrentWeather
 import com.satornjanac.weatherforecastapp.ui.adapters.viewholders.DailyWeatherViewHolder
 import com.satornjanac.weatherforecastapp.ui.adapters.viewholders.HourlyWeatherViewHolder
 
+/**
+ * Adapter for holding and showing all weather data: current, weakly and daily
+ */
 class WeatherAdapter(
     private val context: Context,
     private val displayItems: List<DisplayItems>

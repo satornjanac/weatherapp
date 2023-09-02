@@ -16,6 +16,9 @@ import com.satornjanac.weatherforecastapp.model.IS_DAY
 import com.satornjanac.weatherforecastapp.model.Section
 import com.satornjanac.weatherforecastapp.model.ui.DisplayItems
 
+/**
+ * Showing hourly weather for current date
+ */
 class HourlyAdapter(private val context: Context, private val item: DisplayItems) :
     RecyclerView.Adapter<HourlyAdapter.HourlyItemViewHolder>() {
 
