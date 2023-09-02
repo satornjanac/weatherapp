@@ -5,7 +5,9 @@ Purpose of this app is to demonstrate how we can configure UI that is shown to t
 Views that user can see on home page are: 
     1. Current weather on the user's location
     2. Hourly weather on the user's location for next 24 hours
-    3. 7 days weather on the user's location 
+    3. 7 days weather on the user's location
+
+Every time on pull to refresh we will hopefully get sections from new api point.
 
 In the mock api these views are called sections and one of the responses look like this:
 ```
@@ -162,6 +164,14 @@ The second possible solutions is to have sections and data together in one objec
 
 ### Locations
 
-When you install the app, it will ask for permission to access your last known location.
-If you allow it to, it will automatically show the weather at your last known location
-(it might take some time for it to detect your location). If you don't allow it it wont show anything
+When you install the app, it will ask for permission to access your last known location. If you allow it to, it will automatically show the weather at your last known location (it might take some time for it to detect your location). For purpose of this task and simplicity location is hard coded for Belgrade but code for getting current location is there.
+
+### Future Improvements
+
+1. We could improve tests. Currently we only have two tests - one that tests creating of display items based on response in repository and one that shows how we could check if we really show or hide some views on the screen based on that response.
+2. We should remember last time we updated weather and update it only if it pass an hour, half an hour...
+3. UI could be better and whole UX. Add ability to save favorite cities - database
+4. Add settings so that user could chose temperature in Fehrenheit or Celsius, unit for wind speed... and based on that make api request to open meteo
+5. Along side with point 4. make request builder so that we could make requests with different options
+6. Error codes, and show error message based on this error codes and not genric one
+7. There are prons and cons of using DI in this task. If we use DI, we should make initilaization of repository much better bacuase dispatcher is hardcoded here (annotation @IoDispatcher witch is something that google uses in their example now on android but it breaks testability and one of their recommendations). For this small project it was probably better to make it without DI
