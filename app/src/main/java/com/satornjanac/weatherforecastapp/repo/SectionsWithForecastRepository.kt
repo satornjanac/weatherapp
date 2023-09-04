@@ -12,7 +12,10 @@ import com.satornjanac.weatherforecastapp.networking.api.ForecastApi
 import com.satornjanac.weatherforecastapp.networking.api.MockViewApi
 import com.satornjanac.weatherforecastapp.networking.core.Success
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
+import java.util.concurrent.Flow
 import javax.inject.Inject
 
 /**
@@ -82,5 +85,27 @@ open class SectionsWithForecastRepository @Inject constructor(
         return displayItems
 
     }
+
+    fun getForecastAsFlow(longitude: Double,
+                          latitude: Double,
+                          timeZone: String) = flow {
+        val number = (0..<mockApis.size).random()
+        val sections = mock.getMockViewApi(mockApis[number])
+        val responseBody = sections.body()
+        if (sections.isSuccessful && responseBody != null) {
+            val forecast = forecastApi.getForecast(longitude, latitude, timeZone)
+            val forecastBody = forecast.body()
+            if (forecast.isSuccessful && forecastBody != null) {
+
+                val displayItems = buildDisplayItems(responseBody, forecastBody)
+
+                emit(Success(displayItems))
+            } else {
+                emit(Error(forecast.code(), forecast.errorBody()?.string()))
+            }
+        } else {
+            emit(Error(sections.code(), sections.errorBody()?.string()))
+        }
+    }.flowOn(dispatcher)
 
 }

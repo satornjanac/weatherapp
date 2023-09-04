@@ -3,6 +3,7 @@ package com.satornjanac.weatherforecastapp.ui.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.satornjanac.weatherforecastapp.model.ui.DisplayItems
 import com.satornjanac.weatherforecastapp.networking.core.Error
@@ -35,5 +36,20 @@ class ForecastViewModel @Inject constructor(
                 }
             }
         }
+
+    fun getForecastFlow(
+        longitude: Double,
+        latitude: Double,
+        timeZone: String
+    ) {
+        viewModelScope.launch {
+            repository.getForecastAsFlow(longitude, latitude, timeZone).collect {
+                when(it) {
+                    is Success -> _viewsAndData.postValue(it.data)
+                    is Error -> _errors.postValue(it.message)
+                }
+            }
+        }
+    }
 
 }
