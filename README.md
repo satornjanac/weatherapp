@@ -174,4 +174,5 @@ When you install the app, it will ask for permission to access your last known l
 4. Add settings so that user could chose temperature in Fehrenheit or Celsius, unit for wind speed... and based on that make api request to open meteo
 5. Along side with point 4. make request builder so that we could make requests with different options
 6. Error codes, and show error message based on this error codes and not genric one
-7. There are prons and cons of using DI in this task. If we use DI, we should make initilaization of repository much better bacuase dispatcher is hardcoded here (annotation @IoDispatcher witch is something that google uses in their example now on android but it breaks testability and one of their recommendations). For this small project it was probably better to make it without DI
+7. Better loading indicator
+8. There are prons and cons of using DI in this task. If we use DI, we should make initilaization of repository much better bacuase dispatcher is hardcoded here (annotation @IoDispatcher witch is something that google uses in their example now on android but it breaks testability and one of their recommendations). For this small project it was probably better to make it without DI
